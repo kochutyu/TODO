@@ -1,13 +1,15 @@
 <nav class="nav">
     <!-- Auth -->
-    <div class="nav__list">
-        <button mat-flat-button color="primary">Create</button>
-        <button mat-flat-button color="primary">Read</button>
-        <button mat-flat-button color="primary">Log Out</button>
-        <button mat-flat-button color="warn">Log Out</button>
-    </div>
+    <ul class="nav__list">
+        <li><button mat-flat-button color="primary">Create</button></li>
+        <li><button mat-flat-button color="primary">Read</button></li>
+        <li><button mat-flat-button color="primary">Log Out</button></li>
+        <li><button mat-flat-button color="warn">Log Out</button></li>
+    </ul>
     <!-- User -->
-    <div class="nav__list">
-        <button mat-flat-button color="accent">Sign In</button>
-    </div>
+    <ul class="nav__list">
+        <li>
+            <button mat-flat-button color="accent" (click)="openDialog()">Sign In</button>
+        </li>
+    </ul>
 </nav>

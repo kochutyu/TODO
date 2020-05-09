@@ -7,7 +7,8 @@
     justify-content: flex-end;
     align-items: center;
     &__list{
-        display: inline-block;
+        list-style-type: none;
+        display: flex;
         justify-content: right;
         align-items: center;
         margin-right: 50px;

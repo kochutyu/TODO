@@ -9,25 +9,39 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DemoMaterialModule } from './modules/material.module';
+import { ModalComponent } from './components/modal/modal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
-        NavbarComponent
+        NavbarComponent,
+        ModalComponent
     ],
     imports: [
         CommonModule,
         HttpClientModule,
-        MatSliderModule,
-        DemoMaterialModule
+        FormsModule,
+        ReactiveFormsModule,
+        DemoMaterialModule,
     ],
     exports: [
         HttpClientModule,
-        MatSliderModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DemoMaterialModule,
+        ModalComponent,
         NavbarComponent,
-        DemoMaterialModule
+        ModalComponent
     ],
      providers: [
-        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+         { provide: MatDialogRef, useValue: {} },
+         { provide: MAT_DIALOG_DATA, useValue: [] },
+    ],
+    entryComponents: [
+        NavbarComponent,
+        ModalComponent
     ]
 })
 

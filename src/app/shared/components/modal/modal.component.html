@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+    
+</div>
+<div mat-dialog-actions [ngStyle]="{'display': 'flex', 'justify-content':'center'}">
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
