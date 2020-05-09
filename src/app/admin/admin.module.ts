@@ -14,6 +14,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthService } from './shared/services/auth.service';
 import { ModalService } from '../shared/services/modal.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 @NgModule({
   declarations: [
     AdminLayoutComponent,
@@ -29,12 +30,13 @@ import { ModalService } from '../shared/services/modal.service';
     RouterModule.forChild([
       {
         path: '', component: AdminLayoutComponent, children: [
-          { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
-          { path: 'login', component: LoginPageComponent },
-          { path: 'create', component: CreatePageComponent },
-          { path: 'read', component: ReadPageComponent },
-          { path: 'delete', component: DeletePageComponent },
-          { path: 'read/:id/update', component: UpdatePageComponent },
+          { path: '', redirectTo: '/admin/read', pathMatch: 'full' },
+          { path: 'login', component: LoginPageComponent, canActivate: [AuthGuardService]},
+          { path: 'create', component: CreatePageComponent, canActivate: [AuthGuardService]},
+          { path: 'read', component: ReadPageComponent, canActivate: [AuthGuardService]},
+          { path: 'delete', component: DeletePageComponent, canActivate: [AuthGuardService]},
+          { path: 'read/:id/update', component: UpdatePageComponent, canActivate: [AuthGuardService] },
+          { path: '**', redirectTo: '/admin/read'}
         ]
       }
     ])
