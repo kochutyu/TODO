@@ -6,6 +6,7 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 import { Admin } from 'src/app/shared/shared.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { NavbarService } from 'src/app/shared/services/navbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private navbarS: NavbarService
   ) { }
 
   checkLogin(email:string, password:string): void {
@@ -23,12 +25,21 @@ export class AuthService {
       const admin = new Admin(email, password);
       if (admin.email === res.email && admin.password === res.password) {
         this.setToken(admin);
+        this.navbarS.authStatus = true;
         this.router.navigate(['/admin', 'read']);
       } else {
         this.setErrorMessage();
       }
     });
     
+  }
+
+  private logOut(): void{
+    if (localStorage.getItem('auth')) {
+      this.removeToken();
+      this.navbarS.authStatus = false;
+      this.router.navigate(['/']);
+    }
   }
 
 
@@ -38,6 +49,10 @@ export class AuthService {
 
   private setToken(admin: Admin): void{
     localStorage.setItem('auth', JSON.stringify(true))
+  }
+
+  private removeToken(): void{
+    localStorage.removeItem('auth');
   }
 
   private setErrorMessage(): void{

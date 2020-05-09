@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NavbarService } from '../../services/navbar.service';
 import { ModalService } from '../../services/modal.service';
+import { AuthService } from 'src/app/admin/shared/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ import { ModalService } from '../../services/modal.service';
 export class NavbarComponent implements OnInit {
   constructor(
     public navbarS: NavbarService,
-    public modalS: ModalService
+    public modalS: ModalService,
+    public authS: AuthService
   ) { }
 
   ngOnInit() {
