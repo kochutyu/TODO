@@ -10,12 +10,13 @@ const routes: Routes = [
     path: '', component: MainLayoutComponent, children: [
       {path: '', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: HomePageComponent},
-      {path: 'read/:id', component: ReadPageComponent}
+      { path: 'read/:id', component: ReadPageComponent },
+      { path: '**', redirectTo: '/' }
     ]
   },
   {
     path: 'admin', loadChildren: './admin/admin.module#AdminModule'
-  }
+  },
 ];
 
 @NgModule({
