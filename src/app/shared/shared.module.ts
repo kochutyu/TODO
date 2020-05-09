@@ -12,11 +12,13 @@ import { DemoMaterialModule } from './modules/material.module';
 import { ModalComponent } from './components/modal/modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from './components/modal/login/login.component';
 
 @NgModule({
     declarations: [
         NavbarComponent,
-        ModalComponent
+        ModalComponent,
+        LoginComponent
     ],
     imports: [
         CommonModule,
@@ -32,7 +34,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
         DemoMaterialModule,
         ModalComponent,
         NavbarComponent,
-        ModalComponent
+        ModalComponent,
+        LoginComponent
     ],
      providers: [
          { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
@@ -41,7 +44,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     ],
     entryComponents: [
         NavbarComponent,
-        ModalComponent
+        ModalComponent,
+        LoginComponent
     ]
 })
 

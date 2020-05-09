@@ -1,7 +1,7 @@
 <div mat-dialog-content class="modal-content" [ngStyle]="{'heigth': '100%'}">
     <app-login></app-login>
     <div mat-dialog-actions [ngStyle]="{'display': 'flex', 'justify-content':'center'}">
-        <button mat-button (click)="onNoClick()">Close</button>
-        <button mat-button cdkFocusInitial>Ok</button>
+        <button mat-button (click)="onNoClick(false)" color="warn">Close</button>
+        <button mat-button cdkFocusInitial color="primary" (click)="onNoClick(true)">Ok</button>
     </div>
 </div>
