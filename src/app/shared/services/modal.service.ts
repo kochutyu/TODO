@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { ModalComponent } from '../components/modal/modal.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { log } from 'util';
+import { AuthService } from 'src/app/admin/shared/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,12 @@ export class ModalService {
   constructor(
     public dialogRef: MatDialogRef<ModalService>,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public authS: AuthService
   ) { }
 
   openLoginForm(): void {
+    this.resetModal();
     this.loginStatus = true;
     const dialogRef = this.dialog.open(ModalComponent, {
       width: this.modalWidth,
@@ -42,7 +45,6 @@ export class ModalService {
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.resetModal()
   }
 
 
@@ -54,8 +56,8 @@ export class ModalService {
   submit(): void{
     if (this.loginStatus) { 
       alert('Login');
+      this.authS.checkLogin(this.loginEmail, this.loginPassword);
     }
-    this.resetModal();
   }
 
 }

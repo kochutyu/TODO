@@ -13,12 +13,14 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from './components/modal/login/login.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
     declarations: [
         NavbarComponent,
         ModalComponent,
-        LoginComponent
+        LoginComponent,
+        ToastComponent
     ],
     imports: [
         CommonModule,

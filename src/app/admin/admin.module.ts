@@ -12,6 +12,8 @@ import { DeletePageComponent } from './pages/delete-page/delete-page.component';
 import { UpdatePageComponent } from './pages/update-page/update-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthService } from './shared/services/auth.service';
+import { ModalService } from '../shared/services/modal.service';
 @NgModule({
   declarations: [
     AdminLayoutComponent,
@@ -36,6 +38,9 @@ import { SharedModule } from '../shared/shared.module';
         ]
       }
     ])
+  ],
+  providers: [
+    AuthService, ModalService
   ],
   exports: [RouterModule]
 })

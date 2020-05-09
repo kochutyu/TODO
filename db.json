@@ -11,5 +11,9 @@
     }],
     "profile": {
         "name": "typicode"
+    },
+    "admin": {
+        "email": "admin@gmail.com",
+        "password": "admin123"
     }
 }
