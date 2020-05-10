@@ -8,5 +8,5 @@ export interface ITodo {
     name: string;
     description: string;
     createdAt: Date;
-    editedAt?: Date;
+    editedAt?: Date | string;
 }

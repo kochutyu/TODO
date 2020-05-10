@@ -12,7 +12,7 @@ export class Todo implements ITodo {
         public name: string,
         public description: string,
         public createdAt: Date,
-        public editedAt?: Date,
+        public editedAt?: Date | string,
         public id?: number,
     ) { }
 }
