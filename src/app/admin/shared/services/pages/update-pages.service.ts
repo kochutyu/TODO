@@ -6,6 +6,7 @@ import { ITodo } from 'src/app/shared/shared.interface';
 import { FormGroup } from '@angular/forms';
 import { Todo } from 'src/app/shared/shared.model';
 import { CreatePageService } from './create-page.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class UpdatePagesService {
   todo: ITodo;
   $todo: Subscription;
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private createPageS: CreatePageService
+    private createPageS: CreatePageService,
+    private _snackBar: MatSnackBar
   ) { }
 
   getTodoData(): void {
@@ -37,6 +38,9 @@ export class UpdatePagesService {
       console.log(res);
       this.router.navigate(['/admin', 'read']);
       this.createPageS.resetData();
+      this._snackBar.open('TODO was', 'updated', {
+        duration: 3000,
+      });
     }, err => { 
         console.log(err);
     })

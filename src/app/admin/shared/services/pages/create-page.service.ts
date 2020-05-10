@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class CreatePageService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   resetData(): void {
@@ -46,6 +48,9 @@ export class CreatePageService {
       this.router.navigate(['/admin', 'read']);
       this.form.reset();
       this.resetData();
+      this._snackBar.open('TODO was', 'saved', {
+        duration: 3000,
+      });
     }, err => {
       console.log(err);
     })
