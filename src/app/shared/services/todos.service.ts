@@ -24,7 +24,8 @@ export class TodosService {
           dateOfEdit: todo.editedAt === 'No' ? todo.editedAt : new Date(todo.editedAt),
           edit: todo.id,
           delete: todo.id,
-          position: idx
+          position: idx,
+          id: idx
         }
       })
       this.$updateTodos.unsubscribe();

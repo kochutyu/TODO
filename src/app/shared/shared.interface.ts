@@ -19,4 +19,5 @@ export interface IReadTable {
     edit: number;
     delete: number;
     description?: string;
+    id?: number;
 }
