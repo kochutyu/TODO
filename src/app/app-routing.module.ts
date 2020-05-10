@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ReadPageComponent } from './pages/read-page/read-page.component';
 import { ShowTodoComponent } from './pages/show-todo/show-todo.component';
 
