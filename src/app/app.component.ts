@@ -22,7 +22,6 @@ export class AppComponent implements OnInit{
     if (localStorage.getItem('auth')) {
       const authStatus = !!localStorage.getItem('auth');
       this.navbarS.authStatus = authStatus;
-      this.router.navigate(['admin', 'read']);
     }
   }
 

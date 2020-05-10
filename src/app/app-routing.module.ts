@@ -11,7 +11,6 @@ const routes: Routes = [
       {path: '', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: HomePageComponent},
       { path: 'read/:id', component: ReadPageComponent },
-      { path: '**', redirectTo: '/' }
     ]
   },
   {
