@@ -34,8 +34,7 @@ export class UpdatePagesService {
   updateTodo(): void{
     const id = this.router.url.slice(19);
     const todo: ITodo = this.getNewTodo(id);
-    this.putTodo(todo).subscribe(res => { 
-      console.log(res);
+    this.putTodo(todo).subscribe(res => {
       this.router.navigate(['/admin', 'read']);
       this.createPageS.resetData();
       this._snackBar.open('TODO was', 'updated', {

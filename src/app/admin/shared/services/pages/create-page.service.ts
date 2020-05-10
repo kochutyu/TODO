@@ -44,7 +44,6 @@ export class CreatePageService {
     const todo = this.getNewTodo(id);
     this.btnDisabled = true;
     this.postTodo(todo).subscribe(res => {
-      console.log(res);
       this.router.navigate(['/admin', 'read']);
       this.form.reset();
       this.resetData();

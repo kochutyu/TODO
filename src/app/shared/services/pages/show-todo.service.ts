@@ -16,12 +16,10 @@ export class ShowTodoService {
   ) { }
 
   getTodoData(): void{
-    this.getTodo().subscribe( (res: ITodo) => { 
-      console.log(res);
+    this.getTodo().subscribe( (res: ITodo) => {
       this.todo = res
     }, err => {
       console.log(err);
-         
     })
   }
 
@@ -30,8 +28,6 @@ export class ShowTodoService {
   }
 
   getTodo(): Observable<ITodo>{
-    console.log(this.getId());
-    
     return this.http.get<ITodo>(`http://localhost:3000/todos/${this.getId()}`);
   }
 }

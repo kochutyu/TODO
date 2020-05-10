@@ -31,7 +31,9 @@ export class TodosService {
         }
       })
       this.$updateTodos.unsubscribe();
-    }, err => { console.log(err) })
+    }, err => {
+      console.log(err)
+    })
   }
 
   getTodos(): Observable<ITodo[]> {
