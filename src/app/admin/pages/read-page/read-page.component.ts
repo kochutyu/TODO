@@ -28,11 +28,7 @@ export class ReadPageComponent implements OnInit {
   delete(id: number): void {
     this.modalS.openConfirm();
     this.todoS.removeID = id;
-    if (this.modalS.confirmStatus) {
-      // this.todoS.removeTodo(id);
-      // this.todoS.updateTodos();
-    }
-    
+    this.modalS.confirmDeleteTodo = true;
   }
 
 }

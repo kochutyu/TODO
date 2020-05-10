@@ -24,6 +24,7 @@ export class ModalService {
 
   // CONFIRM
   confirmStatus: boolean;
+  confirmDeleteTodo: boolean;
 
 
 
@@ -58,7 +59,7 @@ export class ModalService {
   }
 
   resetModal(): void {
-    this.loginStatus = this.confirmStatus = false;
+    this.loginStatus = this.confirmStatus = this.confirmDeleteTodo =false;
     this.loginEmail = this.loginPassword = '';
   }
 
