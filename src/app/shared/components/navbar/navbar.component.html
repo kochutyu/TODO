@@ -1,4 +1,5 @@
 <nav class="nav">
+    
     <!-- Auth -->
     <ul class="nav__list" *ngIf="navbarS.authStatus">
         <li [routerLink]="['/admin', 'create']">
@@ -9,10 +10,12 @@
         </li>
         <li><button mat-flat-button color="warn" (click)="authS.logOut()">Log Out</button></li>
     </ul>
+
     <!-- User -->
     <ul class="nav__list" *ngIf="!navbarS.authStatus">
         <li>
             <button mat-flat-button color="accent" (click)="modalS.openLoginForm()">Sign In</button>
         </li>
     </ul>
+
 </nav>

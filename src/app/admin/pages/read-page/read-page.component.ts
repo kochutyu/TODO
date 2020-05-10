@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from 'src/app/shared/services/todos.service';
-import { IReadTable } from 'src/app/shared/shared.interface';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/shared/services/modal.service';
 

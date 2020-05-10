@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IAdmin } from 'src/app/shared/shared.interface';
 import { Observable } from 'rxjs';
-import { ModalService } from 'src/app/shared/services/modal.service';
 import { Admin } from 'src/app/shared/shared.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -21,20 +20,23 @@ export class AuthService {
   ) { }
 
   checkLogin(email:string, password:string): void {
-    this.getAdminInfo().subscribe((res:IAdmin) => { 
+    this.getAdminInfo().subscribe((res: IAdmin) => {
+      
       const admin = new Admin(email, password);
+
       if (admin.email === res.email && admin.password === res.password) {
+
         this.setToken(admin);
         this.navbarS.authStatus = true;
         this.router.navigate(['/admin', 'read']);
       } else {
+
         this.setErrorMessage();
       }
     });
-    
   }
 
-  private logOut(): void{
+  logOut(): void{
     if (localStorage.getItem('auth')) {
       this.removeToken();
       this.navbarS.authStatus = false;

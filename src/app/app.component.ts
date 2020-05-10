@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from './shared/services/navbar.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   constructor(
-    private navbarS: NavbarService,
-    private router: Router
+    private navbarS: NavbarService
   ) {
     
   }
@@ -18,7 +16,7 @@ export class AppComponent implements OnInit{
     this.checkAuth();
   }
 
-  checkAuth(): void{
+  checkAuth(): void{ // for auth by load page
     if (localStorage.getItem('auth')) {
       const authStatus = !!localStorage.getItem('auth');
       this.navbarS.authStatus = authStatus;

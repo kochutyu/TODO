@@ -1,18 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
-// -----------------------
-// DECLARATIONS
-// -----------------------
+//* -----------------------
+//* DECLARATIONS
+//* -----------------------
 import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { ReadPageComponent } from './pages/read-page/read-page.component';
 import { UpdatePageComponent } from './pages/update-page/update-page.component';
+
+//* -----------------------
+//* IMPORTS
+//* -----------------------
 import { SharedModule } from '../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { AuthGuardService } from './shared/services/auth-guard.service';
+
+//* -----------------------
+//* PROVIDERS
+//* -----------------------
 import { AuthService } from './shared/services/auth.service';
 import { ModalService } from '../shared/services/modal.service';
-import { AuthGuardService } from './shared/services/auth-guard.service';
+
+
+
 @NgModule({
   declarations: [
     AdminLayoutComponent,

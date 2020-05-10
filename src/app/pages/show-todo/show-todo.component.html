@@ -1,25 +1,37 @@
 <div class="show-todo">
-    <div class="read-todo">
-        <span class="date">
+    <div class="card-todo">
+
+        <!-- NAME -->
+        <span class="name">
             <span class="bold">Name:</span>
             {{showTodoS.todo.name}}
         </span>
         <div class="hr"></div>
+
+        <!-- DESCRIPTION -->
         <span class="description">
             <span class="bold">Description:</span>
             {{showTodoS.todo.description}}
         </span>
         <div class="hr"></div>
+
+        <!-- DATE OF CREATE -->
         <span class="date">
             <span class="bold">Date of create:</span>
             {{showTodoS.todo.createdAt | date: 'dd/MM/yyyy HH:mm'}}
         </span>
         <div class="hr"></div>
+
+        <!-- DATE OF EDIT -->
         <span class="date">
             <span class="bold">Date of edit:</span>
+
+            <!-- IF STRING -->
             <span *ngIf="showTodoS.todo.editedAt === 'No'; else date">
                 {{showTodoS.todo.editedAt}}
             </span>
+
+            <!-- IF DATE -->
             <ng-template #date>
                 <span>
                     {{showTodoS.todo.editedAt | date: 'dd/MM/yyyy HH:mm'}}
@@ -27,6 +39,8 @@
             </ng-template>
         </span>
         <div class="hr"></div>
+
+        <!-- GO TO THE TABLE -->
         <button mat-flat-button color="primary" (click)="goBack()">Go back</button>
     </div>
 

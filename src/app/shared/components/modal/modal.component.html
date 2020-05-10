@@ -1,12 +1,19 @@
 <div mat-dialog-content class="modal-content" [ngStyle]="{'heigth': '100%'}">
+
+    <!-- MODALS CONTENT -->
     <app-login *ngIf="modalS.loginStatus"></app-login>
     <app-confirm *ngIf="modalS.confirmStatus"></app-confirm>
+
+
+    <!-- MODALS BTN -->
     <div mat-dialog-actions [ngStyle]="{'display': 'flex', 'justify-content':'center'}">
+
+        <!-- CLOSE -->
         <button mat-button (click)="modalS.submit()" color="warn">Close</button>
-        <button mat-button cdkFocusInitial color="primary" (click)="login()" *ngIf="modalS.loginStatus">Ok</button>
-        <button mat-button cdkFocusInitial color="primary" (click)="deleteTodo()"
-            *ngIf="modalS.confirmDeleteTodo">Ok</button>
-        <button mat-button cdkFocusInitial color="primary" (click)="updateTodo()"
-            *ngIf="modalS.confirmUpdateTodo">Ok</button>
+
+        <!-- OK -->
+        <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.loginStatus" (click)="login()">Ok</button>
+        <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.confirmDeleteTodo" (click)="deleteTodo()">Ok</button>
+        <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.confirmUpdateTodo" (click)="updateTodo()">Ok</button>
     </div>
 </div>

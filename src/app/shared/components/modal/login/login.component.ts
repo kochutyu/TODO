@@ -10,18 +10,18 @@ import { log } from 'util';
 })
 export class LoginComponent implements OnInit {
 
-  hide = true;
+  hide: boolean = true; // hide password
 
+  // FOR FORM
   email = new FormControl(this.modalS.loginEmail, [Validators.required, Validators.email]);
   password = new FormControl(this.modalS.loginEmail, [Validators.required, Validators.minLength(6)]);
+
+
   constructor(
     public modalS: ModalService
   ) { }
+
   ngOnInit() {
-    console.log(this.email);
-    
-    this.modalS.modalWidth = '600px';
-    this.modalS.modalHeight = '200px';
   }
 
 

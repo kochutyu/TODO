@@ -40,7 +40,7 @@ export class ModalService {
     this.resetModal();
     this.loginStatus = true;
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: this.modalWidth,
+      width: '600px',
       height: '280px',
       data: { name: this.loginEmail, animal: this.loginPassword }
     });

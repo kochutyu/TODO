@@ -1,28 +1,34 @@
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from '@angular/common/http'
 
 //* -----------------------
 //* LIBRARIES
 //* -----------------------
-import { MatSliderModule } from '@angular/material/slider';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { CommonModule } from '@angular/common';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DemoMaterialModule } from './modules/material.module';
-import { ModalComponent } from './components/modal/modal.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+//* -----------------------
+//* DECLARATIONS
+//* -----------------------
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/modal/login/login.component';
-import { ToastComponent } from './components/toast/toast.component';
-import { RouterModule } from '@angular/router';
 import { ConfirmComponent } from './components/modal/confirm/confirm.component';
+
+//* -----------------------
+//* IMPORTS
+//* -----------------------
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
     declarations: [
         NavbarComponent,
         ModalComponent,
         LoginComponent,
-        ToastComponent,
         ConfirmComponent
     ],
     imports: [

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { ModalService } from 'src/app/shared/services/modal.service';
 import { CreatePageService } from '../../shared/services/pages/create-page.service';
 
 @Component({
