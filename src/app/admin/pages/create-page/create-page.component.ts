@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CreatePageService } from '../../shared/services/pages/create-page.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-create-page',
@@ -15,6 +16,7 @@ export class CreatePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createPageS.name = this.createPageS.description = '';
     this.form = new FormGroup({
       name: new FormControl(this.createPageS.name, [Validators.required]),
       description: new FormControl(this.createPageS.description, [Validators.required]),
