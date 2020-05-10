@@ -1,5 +1,34 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "name": "1",
+      "description": "1",
+      "createdAt": "2020-05-10T16:03:22.922Z",
+      "editedAt": "No",
+      "id": 1
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "createdAt": "2020-05-10T16:03:26.042Z",
+      "editedAt": "No",
+      "id": 2
+    },
+    {
+      "name": "3",
+      "description": "3",
+      "createdAt": "2020-05-10T16:03:29.144Z",
+      "editedAt": "No",
+      "id": 3
+    },
+    {
+      "name": "4",
+      "description": "4",
+      "createdAt": "2020-05-10T16:03:32.481Z",
+      "editedAt": "No",
+      "id": 4
+    }
+  ],
   "admin": {
     "email": "admin@gmail.com",
     "password": "admin123"

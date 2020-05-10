@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TodosService {
   displayedColumns: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit', 'edit', 'delete'];
+  displayedColumnsForUser: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit'];
   dataSource: IReadTable[];
   $updateTodos: Subscription;
   constructor(
