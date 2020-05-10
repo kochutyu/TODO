@@ -8,6 +8,7 @@ import { ReadPageComponent } from './pages/read-page/read-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { ShowTodoComponent } from './pages/show-todo/show-todo.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
     MainLayoutComponent,
     ReadPageComponent,
     HomePageComponent,
+    ShowTodoComponent,
   ],
   imports: [
     BrowserModule,
