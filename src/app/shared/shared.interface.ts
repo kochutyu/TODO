@@ -18,4 +18,5 @@ export interface IReadTable {
     dateOfEdit: Date | string;
     edit: number;
     delete: number;
+    description?: string;
 }
