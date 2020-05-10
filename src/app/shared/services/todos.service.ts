@@ -11,6 +11,7 @@ export class TodosService {
   displayedColumnsForUser: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit'];
   dataSource: IReadTable[];
   $updateTodos: Subscription;
+  removeID: number;
   constructor(
     private http: HttpClient
   ) { }
@@ -37,13 +38,18 @@ export class TodosService {
     return this.http.get<ITodo[]>('http://localhost:3000/todos');
   }
 
+  deleteTodo(): void {
+    this.removeTodo(this.removeID);
+    this.updateTodos();
+  }
+
   removeTodo(id: number): void {
     let $delete: Subscription;
     $delete = this.http.delete(`http://localhost:3000/todos/${id}`).subscribe(res => {
       this.updateTodos();
       $delete.unsubscribe();
     }, err => {
-        console.log(err);
+      console.log(err);
     })
   }
 }

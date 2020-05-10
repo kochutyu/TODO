@@ -15,13 +15,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from './components/modal/login/login.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { RouterModule } from '@angular/router';
+import { ConfirmComponent } from './components/modal/confirm/confirm.component';
 
 @NgModule({
     declarations: [
         NavbarComponent,
         ModalComponent,
         LoginComponent,
-        ToastComponent
+        ToastComponent,
+        ConfirmComponent
     ],
     imports: [
         CommonModule,
@@ -40,7 +42,8 @@ import { RouterModule } from '@angular/router';
         NavbarComponent,
         ModalComponent,
         LoginComponent,
-        RouterModule
+        RouterModule,
+        ConfirmComponent
     ],
      providers: [
          { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
@@ -50,7 +53,8 @@ import { RouterModule } from '@angular/router';
     entryComponents: [
         NavbarComponent,
         ModalComponent,
-        LoginComponent
+        LoginComponent,
+        ConfirmComponent
     ]
 })
 

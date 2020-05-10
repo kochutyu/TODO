@@ -17,13 +17,18 @@ export class ModalService {
   modalHeight: string = '300px';
 
   // LOGIN
+  loginMidalStatus: boolean;
   loginStatus: boolean;
   loginEmail: string;
   loginPassword: string;
 
+  // CONFIRM
+  confirmStatus: boolean;
+
+
 
   constructor(
-    public dialogRef: MatDialogRef<ModalService>,
+    public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
     public dialog: MatDialog,
     public authS: AuthService
@@ -43,20 +48,33 @@ export class ModalService {
     });
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  openConfirm(): void {
+    this.resetModal();
+    this.confirmStatus = true;
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '400px',
+      height: '125px',
+    });
   }
 
-
   resetModal(): void {
-    this.loginStatus = false;
+    this.loginStatus = this.confirmStatus = false;
     this.loginEmail = this.loginPassword = '';
   }
 
-  submit(): void{
+  login(): any{
     if (this.loginStatus) {
       this.authS.checkLogin(this.loginEmail, this.loginPassword);
     }
+  }
+
+  submit(submitStatus = false): boolean | void {
+    if (this.loginStatus) {
+      this.login();
+    }
+
+    this.dialogRef.close();
+    this.resetModal();
   }
 
 }

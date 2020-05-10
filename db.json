@@ -1,27 +1,5 @@
 {
-  "todos": [
-    {
-      "name": "aDSFDA",
-      "description": "SDFASDF",
-      "createdAt": "2020-05-10T17:28:30.520Z",
-      "editedAt": "2020-05-10T17:33:49.063Z",
-      "id": 1
-    },
-    {
-      "name": "ASDF",
-      "description": "ASDFASDF",
-      "createdAt": "2020-05-10T17:28:34.008Z",
-      "editedAt": "No",
-      "id": 2
-    },
-    {
-      "name": "Yura",
-      "description": "Kochut",
-      "createdAt": "2020-05-10T17:51:12.872Z",
-      "editedAt": "No",
-      "id": 3
-    }
-  ],
+  "todos": [],
   "admin": {
     "email": "admin@gmail.com",
     "password": "admin123"
