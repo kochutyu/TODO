@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from './components/modal/login/login.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ToastComponent } from './components/toast/toast.component';
         FormsModule,
         ReactiveFormsModule,
         DemoMaterialModule,
+        RouterModule
     ],
     exports: [
         HttpClientModule,
@@ -37,7 +39,8 @@ import { ToastComponent } from './components/toast/toast.component';
         ModalComponent,
         NavbarComponent,
         ModalComponent,
-        LoginComponent
+        LoginComponent,
+        RouterModule
     ],
      providers: [
          { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },

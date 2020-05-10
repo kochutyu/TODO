@@ -1,8 +1,12 @@
 <nav class="nav">
     <!-- Auth -->
     <ul class="nav__list" *ngIf="navbarS.authStatus">
-        <li><button mat-flat-button color="primary">Create</button></li>
-        <li><button mat-flat-button color="primary">Read</button></li>
+        <li [routerLink]="['/admin', 'create']">
+            <button mat-flat-button color="primary">Create</button>
+        </li>
+        <li [routerLink]="['/admin', 'read']">
+            <button mat-flat-button color="primary">Read</button>
+        </li>
         <li><button mat-flat-button color="warn" (click)="authS.logOut()">Log Out</button></li>
     </ul>
     <!-- User -->
