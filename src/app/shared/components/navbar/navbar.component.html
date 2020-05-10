@@ -2,10 +2,10 @@
     <!-- Auth -->
     <ul class="nav__list" *ngIf="navbarS.authStatus">
         <li [routerLink]="['/admin', 'create']">
-            <button mat-flat-button color="primary">Create</button>
+            <button mat-flat-button color="primary" (click)="modalS.resetModal()">Create</button>
         </li>
         <li [routerLink]="['/admin', 'read']">
-            <button mat-flat-button color="primary">Read</button>
+            <button mat-flat-button color="primary" (click)="modalS.resetModal()">Read</button>
         </li>
         <li><button mat-flat-button color="warn" (click)="authS.logOut()">Log Out</button></li>
     </ul>
