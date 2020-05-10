@@ -20,7 +20,7 @@ export class ReadPageComponent implements OnInit {
   }
 
   edit(id: number): void{
-    this.router.navigate(['/admin', 'read', `${id}`, 'update']);
+    this.router.navigate(['/admin', 'read', 'update', `${id}`]);
   }
 
   delete(id: number): void {

@@ -35,7 +35,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
           { path: 'create', component: CreatePageComponent, canActivate: [AuthGuardService]},
           { path: 'read', component: ReadPageComponent, canActivate: [AuthGuardService]},
           { path: 'delete', component: DeletePageComponent, canActivate: [AuthGuardService]},
-          { path: 'read/:id/update', component: UpdatePageComponent, canActivate: [AuthGuardService] },
+          { path: 'read/update/:id', component: UpdatePageComponent, canActivate: [AuthGuardService] },
           { path: '**', redirectTo: '/admin/read'}
         ]
       }
