@@ -1,0 +1,21 @@
+.read-todo{
+    width: 800px;
+    background-color: rgba(63, 81, 181, 0.6);
+    margin: 0 auto;
+    padding: 20px;
+    .hr{
+        height: 1px;
+        background-color: #fff;
+        margin: 10px 0;
+    }
+}
+.bold{
+    font-size: 20px;
+    font-weight: bold;
+}
+.show-todo{
+    min-height: calc(100vh - 152px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

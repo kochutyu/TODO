@@ -1,1 +1,33 @@
-<p>show-todo works!</p>
+<div class="show-todo">
+    <div class="read-todo">
+        <span class="date">
+            <span class="bold">Name:</span>
+            {{showTodoS.todo.name}}
+        </span>
+        <div class="hr"></div>
+        <span class="description">
+            <span class="bold">Description:</span>
+            {{showTodoS.todo.description}}
+        </span>
+        <div class="hr"></div>
+        <span class="date">
+            <span class="bold">Date of create:</span>
+            {{showTodoS.todo.createdAt | date: 'dd/MM/yyyy HH:mm'}}
+        </span>
+        <div class="hr"></div>
+        <span class="date">
+            <span class="bold">Date of edit:</span>
+            <span *ngIf="showTodoS.todo.editedAt === 'No'; else date">
+                {{showTodoS.todo.editedAt}}
+            </span>
+            <ng-template #date>
+                <span>
+                    {{showTodoS.todo.editedAt | date: 'dd/MM/yyyy HH:mm'}}
+                </span>
+            </ng-template>
+        </span>
+        <div class="hr"></div>
+        <button mat-flat-button color="primary" (click)="goBack()">Go back</button>
+    </div>
+
+</div>
