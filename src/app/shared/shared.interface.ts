@@ -10,3 +10,12 @@ export interface ITodo {
     createdAt: Date;
     editedAt?: Date | string;
 }
+
+export interface IReadTable {
+    position: number;
+    name: string;
+    dateOfcreate: Date;
+    dateOfEdit: Date;
+    edit: number;
+    delete: number;
+}
