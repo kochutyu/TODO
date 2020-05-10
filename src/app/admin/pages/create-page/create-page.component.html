@@ -1,0 +1,31 @@
+<form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- NAME -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="This field is required, please type title"
+            [(ngModel)]="createPageS.name">
+        <mat-error *ngIf="form.get('name').touched && form.get('name').invalid">
+            <span *ngIf="form.get('name').errors.required">
+                Name is <strong>required</strong>
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <div class="hr"></div>
+    <!-- DESCRIOPTION -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="7"
+            cdkAutosizeMaxRows="10" formControlName="description" placeholder="This field is required,
+            please type text..."
+            [ngStyle]="{'min-height': '300px'}" [(ngModel)]="createPageS.description"></textarea>
+          <mat-error *ngIf="form.get('description').touched && form.get('description').invalid">
+              <span *ngIf="form.get('description').errors.required">
+                  Description is <strong>required</strong>
+              </span>
+          </mat-error>
+    </mat-form-field>
+    <div class="hr"></div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid && !createPageS.btnDisabled">Create
+        Todo</button>
+</form>

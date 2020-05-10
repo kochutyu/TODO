@@ -1,13 +1,29 @@
 {
-    "todos": [{
-        "id": 1,
-        "name": "name",
-        "description": "string",
-        "createdAt": "string",
-        "editedAt": "string"
-    }],
-    "admin": {
-        "email": "admin@gmail.com",
-        "password": "admin123"
+  "todos": [
+    {
+      "name": "csd",
+      "description": "ZCXZC",
+      "createdAt": "2020-05-10T12:13:10.260Z",
+      "editedAt": "No",
+      "id": 1
+    },
+    {
+      "name": "fsadf",
+      "description": "asdfasdf",
+      "createdAt": "2020-05-10T12:13:17.642Z",
+      "editedAt": "No",
+      "id": 2
+    },
+    {
+      "name": "ADS",
+      "description": "Asd",
+      "createdAt": "2020-05-10T12:13:31.709Z",
+      "editedAt": "No",
+      "id": 3
     }
+  ],
+  "admin": {
+    "email": "admin@gmail.com",
+    "password": "admin123"
+  }
 }

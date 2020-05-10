@@ -54,8 +54,7 @@ export class ModalService {
   }
 
   submit(): void{
-    if (this.loginStatus) { 
-      alert('Login');
+    if (this.loginStatus) {
       this.authS.checkLogin(this.loginEmail, this.loginPassword);
     }
   }
