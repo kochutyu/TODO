@@ -3,10 +3,10 @@
     <app-confirm *ngIf="modalS.confirmStatus"></app-confirm>
     <div mat-dialog-actions [ngStyle]="{'display': 'flex', 'justify-content':'center'}">
         <button mat-button (click)="modalS.submit()" color="warn">Close</button>
-        <button mat-button cdkFocusInitial color="primary" (click)="login()"
-            *ngIf="modalS.loginStatus">Ok</button>
+        <button mat-button cdkFocusInitial color="primary" (click)="login()" *ngIf="modalS.loginStatus">Ok</button>
         <button mat-button cdkFocusInitial color="primary" (click)="deleteTodo()"
-            *ngIf="modalS.confirmStatus">Ok</button>
-
+            *ngIf="modalS.confirmDeleteTodo">Ok</button>
+        <button mat-button cdkFocusInitial color="primary" (click)="updateTodo()"
+            *ngIf="modalS.confirmUpdateTodo">Ok</button>
     </div>
 </div>

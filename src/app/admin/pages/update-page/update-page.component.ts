@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreatePageService } from '../../shared/services/pages/create-page.service';
 import { UpdatePagesService } from '../../shared/services/pages/update-pages.service';
+import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-update-page',
@@ -13,7 +14,8 @@ export class UpdatePageComponent implements OnInit {
   form: FormGroup;
   constructor(
     public createPageS: CreatePageService,
-    public updatePageS: UpdatePagesService
+    public updatePageS: UpdatePagesService,
+    private modalS: ModalService
   ) { }
 
   ngOnInit() {
@@ -26,7 +28,8 @@ export class UpdatePageComponent implements OnInit {
   }
 
   submit(): void {
-    this.updatePageS.updateTodo();
+    this.modalS.openConfirm();
+    this.modalS.confirmUpdateTodo = true;
   }
 }
 
