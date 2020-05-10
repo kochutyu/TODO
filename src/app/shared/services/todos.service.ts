@@ -38,6 +38,7 @@ export class TodosService {
   removeTodo(id: number): void {
     let $delete: Subscription;
     $delete = this.http.delete(`http://localhost:3000/todos/${id}`).subscribe(res => {
+      this.updateTodos();
       $delete.unsubscribe();
     }, err => {
         console.log(err);
