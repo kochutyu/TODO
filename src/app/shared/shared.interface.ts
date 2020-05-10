@@ -15,7 +15,7 @@ export interface IReadTable {
     position: number;
     name: string;
     dateOfcreate: Date;
-    dateOfEdit: Date;
+    dateOfEdit: Date | string;
     edit: number;
     delete: number;
 }
