@@ -59,7 +59,7 @@ export class AuthService {
 
   private setErrorMessage(): void{
     this._snackBar.open('You are not admin!', "Please try logging in again!", {
-      duration: 1000,
+      duration: 3000,
     });
   }
 }
