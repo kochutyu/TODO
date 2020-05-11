@@ -12,23 +12,54 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 export class UpdatePageComponent implements OnInit {
 
   form: FormGroup;
+
+
+
+
+
   constructor(
     public createPageS: CreatePageService,
     public updatePageS: UpdatePagesService,
     private modalS: ModalService
   ) { }
 
+
+
+
+
   ngOnInit() {
+
+    this.initForm();
+  }
+
+
+
+
+
+  initForm(): void{
+    // GET DATE FOR EDIT
+    this.updatePageS.getTodoData();
+
+    // GROUP FROM
     this.form = new FormGroup({
       name: new FormControl(this.createPageS.name, [Validators.required]),
       description: new FormControl(this.createPageS.description, [Validators.required]),
     });
+
+    // SAVE FORM IN SERVICE FOR RESPONSIVE RESET FORM
     this.createPageS.form = this.form;
-    this.updatePageS.getTodoData();
   }
 
+
+
+
+  
   submit(): void {
+
+    // GET MODAL
     this.modalS.openConfirm();
+
+    // GET BTN FOR CONFIRM UPDATE TODO
     this.modalS.confirmUpdateTodo = true;
   }
 }
