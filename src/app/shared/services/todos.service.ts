@@ -7,14 +7,24 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TodosService {
+
   displayedColumns: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit', 'edit', 'delete'];
   displayedColumnsForUser: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit'];
   dataSource: IReadTable[];
   $updateTodos: Subscription;
   removeID: number;
+
+
+
+
+
   constructor(
     private http: HttpClient
   ) { }
+
+
+
+
 
   updateTodos(): void {
     let table: IReadTable[];
@@ -37,10 +47,17 @@ export class TodosService {
   }
 
 
+
+
+
   deleteTodo(): void {
     this.removeTodo(this.removeID);
     this.updateTodos();
   }
+
+
+
+
 
   removeTodo(id: number): void {
     let $delete: Subscription;
@@ -52,18 +69,35 @@ export class TodosService {
     })
   }
 
+
+
+
+
+
   getTodos(): Observable<ITodo[]> {
     return this.http.get<ITodo[]>('http://localhost:3000/todos');
   }
+
+
+
+
 
   getTodo(id: number): Observable<ITodo> {
     return this.http.get<ITodo>(`http://localhost:3000/todos/${id}`)
   }
 
+
+
+
+
   postTodo(todo: ITodo): Observable<ITodo> {
     return this.http.post<ITodo>('http://localhost:3000/todos', todo);
   }
 
+
+
+
+  
   putTodo(todo: ITodo): Observable<ITodo> {
     return this.http.put<ITodo>(`http://localhost:3000/todos/${todo.id}`, todo);
   }
