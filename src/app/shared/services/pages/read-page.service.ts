@@ -9,7 +9,12 @@ import { Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class ReadPageService {
+
   $todos: Subscription;
+
+
+
+
 
   constructor(
     private router: Router,
@@ -17,28 +22,31 @@ export class ReadPageService {
     private todoS: TodosService
   ) { }
 
+
+
+
+
   readTodo(id: number): void {
 
-    if (isNaN(id)) { // if id is NaN
+    if (isNaN(id)) { // IF ID IS NaN
 
       this.router.navigate(['/read']);
-    } else { // if id is number
+    } else { // IF ID IS NUMBER
       this.$todos = this.todoS.getTodos().subscribe((todos: ITodo[]) => {
         this.showTodoS.todo = todos.find((todo: ITodo) => todo.id === id);
 
-        if (this.showTodoS.todo) { // if id exist
+        if (this.showTodoS.todo) { // IF ID EXIST
 
           this.showTodoS.statusContentInit = true;
           this.router.navigate(['/read', id]);
-        } else { // if id not exist
+        } else { // IF ID NOT EXIST
 
           this.router.navigate(['/read']);
         }
 
-        this.$todos.unsubscribe(); // unsubscribe
+        this.$todos.unsubscribe(); // UNSUBSCRIBE
       })
     }
 
   }
-
 }
