@@ -22,7 +22,6 @@ export class ReadPageService {
     
     
     this.showTodoS.todo = todo;
-    this.showTodoS.setInfoForGuard(todo.id);
     this.router.navigate(['/read', todo.id]);
   }
 }

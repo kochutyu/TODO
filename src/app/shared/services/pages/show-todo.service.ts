@@ -24,7 +24,7 @@ export class ShowTodoService {
   }
 
   getId(): number{
-    return +this.router.url.slice(6,) + 1
+    return +this.router.url.slice(6,)
   }
 
   getTodo(): Observable<ITodo>{
