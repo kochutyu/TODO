@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalService } from '../../services/modal.service';
 import { TodosService } from '../../services/todos.service';
 import { UpdatePagesService } from 'src/app/admin/shared/services/pages/update-pages.service';
@@ -15,6 +15,7 @@ export interface DialogData {
 })
 
 export class ModalComponent implements OnInit {
+
   constructor(
     public modalS: ModalService,
     public dialogRef: MatDialogRef<ModalComponent>,
@@ -22,10 +23,12 @@ export class ModalComponent implements OnInit {
     private todoS: TodosService,
     private updatePageS: UpdatePagesService
   ) {
-    this.modalS.dialogRef = this.dialogRef;
   }
 
   ngOnInit(): void {
+
+    // SAVE MODAL IN SERVICE FOR RESPONSIVE MANAGE
+    this.modalS.dialogRef = this.dialogRef;
   }
 
   login(): void {
