@@ -35,6 +35,6 @@
 
     <tr mat-header-row *matHeaderRowDef="todoS.displayedColumnsForUser"></tr>
     <tr mat-row *matRowDef="let todo; columns: todoS.displayedColumnsForUser;" class="tr"
-        (click)="readPageS.readTodo(todo.id)">
+        (click)="readPageS.readTodo(todo.edit)">
     </tr>
 </table>
