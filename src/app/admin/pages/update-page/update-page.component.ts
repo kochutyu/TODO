@@ -37,6 +37,7 @@ export class UpdatePageComponent implements OnInit {
 
 
   initForm(): void{
+    
     // GET DATE FOR EDIT
     this.updatePageS.getTodoData();
 
@@ -53,7 +54,7 @@ export class UpdatePageComponent implements OnInit {
 
 
 
-  
+
   submit(): void {
 
     // GET MODAL
