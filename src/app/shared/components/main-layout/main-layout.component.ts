@@ -9,10 +9,10 @@ export class MainLayoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+
 
 
   
-
+  ngOnInit() {
+  }
 }
