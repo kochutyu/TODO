@@ -12,7 +12,7 @@
         <button mat-button (click)="modalS.submit()" color="warn">Close</button>
 
         <!-- OK -->
-        <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.loginStatus" (click)="login()">Ok</button>
+        <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.loginStatus" (click)="login()" [disabled]="modalS.loginForm.invalid">Ok</button>
         <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.confirmDeleteTodo" (click)="deleteTodo()">Ok</button>
         <button mat-button cdkFocusInitial color="primary" *ngIf="modalS.confirmUpdateTodo" (click)="updateTodo()">Ok</button>
     </div>

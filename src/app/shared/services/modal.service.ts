@@ -3,6 +3,7 @@ import { ModalComponent } from '../components/modal/modal.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { log } from 'util';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class ModalService {
   loginStatus: boolean;
   loginEmail: string;
   loginPassword: string;
+  loginForm: FormGroup;
 
   // CONFIRM
   confirmStatus: boolean;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { log } from 'util';
 
 @Component({
   selector: 'app-login',
@@ -40,5 +39,8 @@ export class LoginComponent implements OnInit {
       email: new FormControl(this.modalS.loginEmail, [Validators.required, Validators.email]),
       password: new FormControl(this.modalS.loginPassword, [Validators.required, Validators.minLength(6)])
     });
+
+    // SAVE FORM IN SERVICE FOR RESPONSIVE RESET FORM
+    this.modalS.loginForm = this.form;
   }
 }
