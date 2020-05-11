@@ -1,8 +1,7 @@
-import { Component, OnInit, DoCheck, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReadPageService } from 'src/app/shared/services/pages/read-page.service';
 import { ShowTodoService } from 'src/app/shared/services/pages/show-todo.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-todo',
@@ -18,12 +17,22 @@ export class ShowTodoComponent implements OnInit{
   ) {
   }
 
+
+
+
+
   ngOnInit() {
+
+    // SEARCH TODO BY LOAD PAGE
     this.readPageS.readTodo(this.showTodoS.getId());
   }
+
+
+
+
+
 
   goBack(): void{
     this.router.navigate(['/read']);
   }
-
 }
