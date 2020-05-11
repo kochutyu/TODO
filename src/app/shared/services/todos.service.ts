@@ -27,7 +27,7 @@ export class TodosService {
           edit: todo.id,
           delete: todo.id,
           position: idx,
-          id: idx
+          id: idx + 1
         }
       })
       this.$updateTodos.unsubscribe();

@@ -9,6 +9,7 @@ import { ShowTodoService } from './show-todo.service';
 export class ReadPageService {
 
   todo: ITodo;
+  presentID: number;
 
   constructor(
     private router: Router,
@@ -17,7 +18,11 @@ export class ReadPageService {
 
   readTodo(todo: ITodo): void {
     this.todo = todo;
+    console.log(todo.id);// return 
+    
+    
     this.showTodoS.todo = todo;
-    this.router.navigate(['/read', `${todo.id}`]);
+    this.showTodoS.setInfoForGuard(todo.id);
+    this.router.navigate(['/read', todo.id]);
   }
 }
