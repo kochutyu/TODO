@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TodosService } from 'src/app/shared/services/todos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class CreatePageService {
   form: FormGroup;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private todoS: TodosService
   ) { }
 
   resetData(): void {
@@ -30,7 +31,7 @@ export class CreatePageService {
 
 
   getId(): number {
-    this.getTodos().subscribe((res: ITodo[]) => {
+    this.todoS.getTodos().subscribe((res: ITodo[]) => {
       this.todoList = res;
     })
     if (this.todoList[0]) {
@@ -43,7 +44,7 @@ export class CreatePageService {
     const id = this.getId();
     const todo = this.getNewTodo(id);
     this.btnDisabled = true;
-    this.postTodo(todo).subscribe(res => {
+    this.todoS.postTodo(todo).subscribe(res => {
       this.router.navigate(['/admin', 'read']);
       this.form.reset();
       this.resetData();
@@ -58,12 +59,5 @@ export class CreatePageService {
 
   getNewTodo(id): ITodo {
     return { name: this.name, description: this.description, createdAt: new Date(), editedAt: 'No', id};
-  }
-
-  getTodos(): Observable<ITodo[]> {
-    return this.http.get<ITodo[]>('http://localhost:3000/todos')
-  }
-  postTodo(todo: ITodo): Observable<ITodo> {
-    return this.http.post<ITodo>('http://localhost:3000/todos', todo);
   }
 }

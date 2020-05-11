@@ -1,5 +1,5 @@
 <div class="show-todo">
-    <div class="card-todo">
+    <div class="card-todo" *ngIf="showTodoS.statusContentInit">
 
         <!-- NAME -->
         <span class="name">
@@ -37,6 +37,7 @@
                     {{showTodoS.todo.editedAt | date: 'dd/MM/yyyy HH:mm'}}
                 </span>
             </ng-template>
+
         </span>
         <div class="hr"></div>
 

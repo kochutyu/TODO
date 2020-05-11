@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { Todo } from 'src/app/shared/shared.model';
 import { CreatePageService } from './create-page.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TodosService } from 'src/app/shared/services/todos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,14 @@ export class UpdatePagesService {
   $todo: Subscription;
   constructor(
     private router: Router,
-    private http: HttpClient,
     private createPageS: CreatePageService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private todoS: TodosService
   ) { }
 
   getTodoData(): void {
     const id = this.getId();
-     this.$todo = this.getTodo(id).subscribe( (res: ITodo) => { 
+     this.$todo = this.todoS.getTodo(id).subscribe( (res: ITodo) => { 
        this.todo = res;
        this.createPageS.name = res.name;
        this.createPageS.description = res.description;
@@ -34,7 +35,7 @@ export class UpdatePagesService {
   updateTodo(): void{
     const id = this.router.url.slice(19);
     const todo: ITodo = this.getNewTodo(id);
-    this.putTodo(todo).subscribe(res => {
+    this.todoS.putTodo(todo).subscribe(res => {
       this.router.navigate(['/admin', 'read']);
       this.createPageS.resetData();
       this._snackBar.open('TODO was', 'updated', {
@@ -51,14 +52,6 @@ export class UpdatePagesService {
 
   getId(): number{
     return +this.router.url.slice(19);
-  }
-
-  getTodo(id:number): Observable<ITodo> { 
-    return this.http.get<ITodo>(`http://localhost:3000/todos/${id}`)
-  }
-
-  putTodo(todo: ITodo): Observable<ITodo> {
-    return this.http.put<ITodo>(`http://localhost:3000/todos/${todo.id}`, todo);
   }
 
 }

@@ -36,9 +36,6 @@ export class TodosService {
     })
   }
 
-  getTodos(): Observable<ITodo[]> {
-    return this.http.get<ITodo[]>('http://localhost:3000/todos');
-  }
 
   deleteTodo(): void {
     this.removeTodo(this.removeID);
@@ -53,5 +50,21 @@ export class TodosService {
     }, err => {
       console.log(err);
     })
+  }
+
+  getTodos(): Observable<ITodo[]> {
+    return this.http.get<ITodo[]>('http://localhost:3000/todos');
+  }
+
+  getTodo(id: number): Observable<ITodo> {
+    return this.http.get<ITodo>(`http://localhost:3000/todos/${id}`)
+  }
+
+  postTodo(todo: ITodo): Observable<ITodo> {
+    return this.http.post<ITodo>('http://localhost:3000/todos', todo);
+  }
+
+  putTodo(todo: ITodo): Observable<ITodo> {
+    return this.http.put<ITodo>(`http://localhost:3000/todos/${todo.id}`, todo);
   }
 }

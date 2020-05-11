@@ -3,31 +3,33 @@ import { Observable } from 'rxjs';
 import { ITodo } from '../../shared.interface';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TodosService } from '../todos.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowTodoService {
-  todo: ITodo;
 
+  todo: ITodo; // for init data
+  statusContentInit: boolean;
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private todoS: TodosService
   ) { }
 
-  getTodoData(): void{
-    this.getTodo().subscribe( (res: ITodo) => {
-      this.todo = res
+  getTodoData(): void {
+    this.todoS.getTodo(this.getId()).subscribe((res: ITodo) => {
+      this.todo = res;
+      this.statusContentInit = true;
+      console.log(this.statusContentInit);
+      
     }, err => {
       console.log(err);
     })
   }
 
-  getId(): number{
-    return +this.router.url.slice(6,)
-  }
-
-  getTodo(): Observable<ITodo>{
-    return this.http.get<ITodo>(`http://localhost:3000/todos/${this.getId()}`);
+  getId(): number {
+    return +this.router.url.slice(6)
   }
 }
