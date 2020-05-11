@@ -24,7 +24,7 @@ export class ShowTodoComponent implements OnInit{
   ngOnInit() {
 
     // SEARCH TODO BY LOAD PAGE
-    this.readPageS.readTodo(this.showTodoS.getId());
+    this.readPageS.readTodo(this.showTodoS.getTodoID());
   }
 
 
