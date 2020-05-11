@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { ModalComponent } from '../components/modal/modal.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { log } from 'util';
 import { AuthService } from 'src/app/admin/shared/services/auth.service';
 import { FormGroup } from '@angular/forms';
 
@@ -31,6 +30,8 @@ export class ModalService {
 
 
 
+
+
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
@@ -38,20 +39,28 @@ export class ModalService {
     public authS: AuthService
   ) { }
 
+
+
+
+  // OPEN LOGIN FORM
   openLoginForm(): void {
     this.resetModal();
     this.loginStatus = true;
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '600px',
       height: '280px',
-      data: { name: this.loginEmail, animal: this.loginPassword }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe( () => {
       this.resetModal();
     });
   }
 
+
+
+
+
+  // OPEN CONFIRM
   openConfirm(): void {
     this.resetModal();
     this.confirmStatus = true;
@@ -61,6 +70,10 @@ export class ModalService {
     });
   }
 
+
+
+
+
   resetModal(): void {
     this.loginStatus =
       this.confirmStatus =
@@ -69,15 +82,13 @@ export class ModalService {
     this.loginEmail = this.loginPassword = '';
   }
 
-  login(): any{
-    if (this.loginStatus) {
-      this.authS.checkLogin(this.loginEmail, this.loginPassword);
-    }
-  }
 
+
+
+  // SUBMIT
   submit(submitStatus = false): boolean | void {
     if (this.loginStatus) {
-      this.login();
+      this.authS.checkLogin(this.loginEmail, this.loginPassword);
     }
 
     this.dialogRef.close();
