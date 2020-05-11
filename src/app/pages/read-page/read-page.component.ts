@@ -16,17 +16,28 @@ export class ReadPageComponent implements OnInit {
     public readPageS: ReadPageService
   ) { }
 
+
+
+
+
   ngOnInit() {
     this.todoS.updateTodos();
   }
+
+
+
+
 
   edit(id: number): void {
     this.router.navigate(['/admin', 'read', 'update', `${id}`]);
   }
 
+
+
+
+
   delete(id: number): void {
     this.todoS.removeTodo(id);
     this.todoS.updateTodos();
   }
-
 }
