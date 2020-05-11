@@ -40,8 +40,10 @@ export class ReadPageComponent implements OnInit {
 
   // DELETE TODO
   delete(id: number): void {
-    this.modalS.openConfirm();
     this.todoS.removeID = id;
+
+    // GET MODAL
+    this.modalS.openConfirm();
 
     // GET BTN FOR CONFIRM DELETE TODO
     this.modalS.confirmDeleteTodo = true;
