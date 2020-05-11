@@ -11,18 +11,34 @@ import { log } from 'util';
 export class LoginComponent implements OnInit {
 
   hide: boolean = true; // hide password
+  form: FormGroup;
 
-  // FOR FORM
-  email = new FormControl(this.modalS.loginEmail, [Validators.required, Validators.email]);
-  password = new FormControl(this.modalS.loginEmail, [Validators.required, Validators.minLength(6)]);
+
+
 
 
   constructor(
     public modalS: ModalService
   ) { }
 
+
+
+
+
   ngOnInit() {
+    this.initForm();
   }
 
 
+
+
+
+  initForm(): void {
+
+    // FORM FORM
+    this.form = new FormGroup({
+      email: new FormControl(this.modalS.loginEmail, [Validators.required, Validators.email]),
+      password: new FormControl(this.modalS.loginPassword, [Validators.required, Validators.minLength(6)])
+    });
+  }
 }
