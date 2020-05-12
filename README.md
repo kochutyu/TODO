@@ -11,3 +11,8 @@ json-server --watch db.json
 
 ng serve -o
 
+# Data for admin panel
+
+email:      admin@gmail.com
+password:   admin123
+
