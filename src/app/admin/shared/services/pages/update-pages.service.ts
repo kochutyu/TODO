@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ITodo } from 'src/app/shared/shared.interface';
-import { FormGroup } from '@angular/forms';
-import { Todo } from 'src/app/shared/shared.model';
 import { CreatePageService } from './create-page.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TodosService } from 'src/app/shared/services/todos.service';
@@ -33,7 +30,7 @@ export class UpdatePagesService {
 
 
 
-  getTodoID(): number {
+  getTodoIdFromURL(): number {
 
     return +this.router.url.slice(19);
   }
@@ -44,15 +41,25 @@ export class UpdatePagesService {
 
   getTodoData(): void {
 
-    const id = this.getTodoID();
+    if (this.todoS.getTodoJSON() !== null) { // IF TODO IS IN LOCAL STORAGE
+      this.todo = this.todoS.getTodoFromJSON();
+      this.createPageS.name = this.todo.name;
+      this.createPageS.description = this.todo.description;
+      if (this.todo.id !== this.getTodoIdFromURL()) { // IF TODO ID !== URL.ID => GET TODO DATE FROM DATABASE
 
-    // GET DATE FOR FORM
-    this.$todo = this.todoS.getTodo(id).subscribe((todo: ITodo) => {
-      this.todo = todo;
-      this.createPageS.name = todo.name;
-      this.createPageS.description = todo.description;
-      this.$todo.unsubscribe();
-    })
+        this.$todo = this.todoS.getTodo(this.getTodoIdFromURL()).subscribe((todo: ITodo) => {
+          this.todo = todo;
+          this.createPageS.name = todo.name;
+          this.createPageS.description = todo.description;
+          this.todoS.setTodoJSON(this.todo);
+          this.$todo.unsubscribe();
+        }, err => { // IF TODO ID NOT EXIST
+
+          console.log(err);
+          this.router.navigate(['/admin', 'read']);
+        })
+      }
+    }
   }
 
 
@@ -66,9 +73,9 @@ export class UpdatePagesService {
 
 
 
-  
+
   updateTodo(): void {
-    const id = this.getTodoID();
+    const id = this.getTodoIdFromURL();
     const todo: ITodo = this.getNewTodo(id);
 
     this.$putTodo = this.todoS.putTodo(todo).subscribe(res => {
