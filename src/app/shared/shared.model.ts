@@ -14,5 +14,6 @@ export class Todo implements ITodo {
         public createdAt: Date,
         public editedAt?: Date | string,
         public id?: number,
+        public position?: number
     ) { }
 }

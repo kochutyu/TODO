@@ -13,21 +13,21 @@
     </ng-container>
 
     <!-- DETE OF CREATE -->
-    <ng-container matColumnDef="dateOfcreate">
+    <ng-container matColumnDef="createdAt">
         <th mat-header-cell *matHeaderCellDef> Date of Create </th>
-        <td mat-cell *matCellDef="let element"> {{element.dateOfcreate | date: 'dd/MM/yyyy HH:mm'}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd/MM/yyyy HH:mm'}} </td>
     </ng-container>
 
     <!-- DATE OF EDIT -->
-    <ng-container matColumnDef="dateOfEdit">
+    <ng-container matColumnDef="editedAt">
         <th mat-header-cell *matHeaderCellDef> Date of Edit </th>
         <td mat-cell *matCellDef="let element">
-            <span *ngIf="element.dateOfEdit === 'No'; else date">
-                {{element.dateOfEdit }}
+            <span *ngIf="element.editedAt === 'No'; else date">
+                {{element.editedAt }}
             </span>
             <ng-template #date>
                 <span>
-                    {{element.dateOfEdit | date: 'dd/MM/yyyy HH:mm'}}
+                    {{element.editedAt | date: 'dd/MM/yyyy HH:mm'}}
                 </span>
             </ng-template>
         </td>
@@ -38,7 +38,7 @@
         <th mat-header-cell *matHeaderCellDef> Edit </th>
         <td mat-cell *matCellDef="let element">
             <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
-                (click)="edit(element.edit)">
+                (click)="edit(element.id)">
                 <mat-icon>edit</mat-icon>
             </button>
         </td>
@@ -49,7 +49,7 @@
         <th mat-header-cell *matHeaderCellDef> Delete </th>
         <td mat-cell *matCellDef="let element">
             <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon"
-                (click)="delete(element.edit)">
+                (click)="delete(element.id)">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ITodo, IReadTable } from '../shared.interface';
+import { ITodo } from '../shared.interface';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TodosService {
 
-  displayedColumns: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit', 'edit', 'delete'];
-  displayedColumnsForUser: string[] = ['position', 'name', 'dateOfcreate', 'dateOfEdit'];
-  dataSource: IReadTable[];
+  displayedColumns: string[] = ['position', 'name', 'createdAt', 'editedAt', 'edit', 'delete'];
+  displayedColumnsForUser: string[] = ['position', 'name', 'createdAt', 'editedAt'];
+  dataSource: ITodo[];
   $updateTodos: Subscription;
   removeID: number;
 
@@ -27,19 +27,16 @@ export class TodosService {
 
 
   updateTodos(): void {
-    let table: IReadTable[];
-    this.$updateTodos = this.getTodos().subscribe((res: ITodo[]) => {
-      this.dataSource = res.map((todo: ITodo, idx: number) => {
+    let table: ITodo[];
+    this.$updateTodos = this.getTodos().subscribe((todo: ITodo[]) => {
+      this.dataSource = todo.map((todo: ITodo, idx: number) => {
         return {
-          name: todo.name,
-          dateOfcreate: new Date(todo.createdAt),
-          dateOfEdit: todo.editedAt === 'No' ? todo.editedAt : new Date(todo.editedAt),
-          edit: todo.id,
-          delete: todo.id,
-          position: idx,
-          id: idx + 1
+          ...todo,
+          createdAt: new Date(todo.createdAt),
+          editedAt: todo.editedAt === 'No' ? todo.editedAt : new Date(todo.editedAt),
+          position: idx + 1
         }
-      })
+      });
       this.$updateTodos.unsubscribe();
     }, err => {
       console.log(err)
@@ -97,8 +94,36 @@ export class TodosService {
 
 
 
-  
+
   putTodo(todo: ITodo): Observable<ITodo> {
     return this.http.put<ITodo>(`http://localhost:3000/todos/${todo.id}`, todo);
   }
+
+
+
+
+
+  setTodoJSON(todo: ITodo): void {
+    localStorage.setItem('preview-todo', JSON.stringify(todo));
+  }
+
+
+
+
+
+  getTodoJSON(): string {
+    return localStorage.getItem('preview-todo');
+  }
+
+
+
+
+
+  getTodoFromJSON(): ITodo {
+    return JSON.parse(localStorage.getItem('preview-todo'));
+  }
+
+
+
+
 }
