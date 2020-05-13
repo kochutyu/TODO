@@ -66,7 +66,7 @@ export class ModalService {
     this.confirmStatus = true;
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '400px',
-      height: '125px',
+      height: '135px',
     });
   }
 

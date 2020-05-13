@@ -37,12 +37,12 @@ export class ModalComponent implements OnInit {
 
   deleteTodo(): void {
     this.todoS.deleteTodo();
-    this.modalS.submit(true);
+    this.modalS.submit();
   }
 
   updateTodo(): void{
     this.updatePageS.updateTodo();
-    this.modalS.submit(true);
+    this.modalS.submit();
   }
 
 
