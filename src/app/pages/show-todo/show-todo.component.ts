@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './show-todo.component.html',
   styleUrls: ['./show-todo.component.scss']
 })
-export class ShowTodoComponent implements OnInit{
+export class ShowTodoComponent implements OnInit {
 
   constructor(
     public readPageS: ReadPageService,
@@ -23,16 +23,20 @@ export class ShowTodoComponent implements OnInit{
 
   ngOnInit() {
 
-    // SEARCH TODO BY LOAD PAGE
-    this.readPageS.readTodo(this.showTodoS.getTodoID());
+    this.showTodoS.getDataTodo();
   }
 
 
 
 
 
+  goBack(): void {
 
-  goBack(): void{
     this.router.navigate(['/read']);
   }
+
+
+
+
+  
 }

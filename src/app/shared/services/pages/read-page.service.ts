@@ -27,26 +27,13 @@ export class ReadPageService {
 
 
   readTodo(id: number): void {
-
-    if (isNaN(id)) { // IF ID IS NaN
-
-      this.router.navigate(['/read']);
-    } else { // IF ID IS NUMBER
-      this.$todos = this.todoS.getTodos().subscribe((todos: ITodo[]) => {
-        this.showTodoS.todo = todos.find((todo: ITodo) => todo.id === id);
-
-        if (this.showTodoS.todo) { // IF ID EXIST
-
-          this.showTodoS.statusContentInit = true;
-          this.router.navigate(['/read', id]);
-        } else { // IF ID NOT EXIST
-
-          this.router.navigate(['/read']);
-        }
-
-        this.$todos.unsubscribe(); // UNSUBSCRIBE
-      })
-    }
-
+    this.showTodoS.todo = this.todoS.dataSource.find((todo: ITodo) => id === todo.id); // GET TODO FOR PREVIEW
+    this.todoS.setTodoJSON(this.showTodoS.todo); // SAVE IN LOCAL STORAGE
+    this.router.navigate(['/read', id]); // ROUTE TO PREVIEW OF TODO
   }
+
+
+
+
+
 }
